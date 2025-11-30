@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package glossary;
+
+service GlossaryService {
+  rpc AddTerm(AddTermRequest) returns (TermResponse);
+  rpc GetTerm(GetTermRequest) returns (TermResponse);
+  rpc ListTerms(ListTermsRequest) returns (ListTermsResponse);
+  rpc SearchTerms(SearchTermsRequest) returns (ListTermsResponse);
+}
+
+service MindmapService {
+  rpc GetGraph(GetGraphRequest) returns (GraphResponse);
+}
+
+message Term {
+  string id = 1;
+  string title = 2;
+  string definition = 3;
+  repeated string sources = 4;
+  repeated Relation relations = 5;
+}
+
+message Relation {
+  string target_id = 1;
+  string type = 2;
+}
+
+message AddTermRequest {
+  Term term = 1;
+}
+
+message TermResponse {
+  Term term = 1;
+}
+
+message GetTermRequest {
+  string id = 1;
+}
+
+message ListTermsRequest {}
+
+message SearchTermsRequest {
+  string query = 1;
+}
+
+message ListTermsResponse {
+  repeated Term terms = 1;
+}
+
+message GetGraphRequest {}
+
+message GraphNode {
+  string id = 1;
+  string label = 2;
+}
+
+message GraphEdge {
+  string source = 1;
+  string target = 2;
+  string type = 3;
+}
+
+message GraphResponse {
+  repeated GraphNode nodes = 1;
+  repeated GraphEdge edges = 2;
+}

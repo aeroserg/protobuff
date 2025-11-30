@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  glossary:
+    build:
+      context: .
+      dockerfile: glossary/Dockerfile
+    ports:
+      - "50051:50051"
+  mindmap:
+    build:
+      context: .
+      dockerfile: mindmap/Dockerfile
+    depends_on:
+      - glossary
+    environment:
+      - GLOSSARY_ADDR=glossary:50051
+    ports:
+      - "50052:50052"

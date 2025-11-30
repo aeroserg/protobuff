@@ -1,0 +1,26 @@
+- id: term-1
+  title: API Gateway
+  definition: Компонент, обеспечивающий единый вход в микросервисную систему.
+  sources:
+    - https://martinfowler.com/articles/microservices.html
+  relations:
+    - target_id: term-2
+      type: depends_on
+
+- id: term-2
+  title: gRPC
+  definition: Фреймворк удалённого вызова процедур поверх HTTP/2 и protobuf.
+  sources:
+    - https://grpc.io/
+  relations:
+    - target_id: term-3
+      type: alternative_to
+
+- id: term-3
+  title: REST
+  definition: Архитектурный стиль взаимодействия клиент-сервер на базе HTTP.
+  sources:
+    - https://restfulapi.net/
+  relations:
+    - target_id: term-2
+      type: alternative_to
