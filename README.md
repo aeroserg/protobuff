@@ -29,8 +29,8 @@ grpcurl -plaintext localhost:50052 glossary.MindmapService/GetGraph
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 make proto
-PYTHONPATH=services python services/glossary_server.py --data data/terms.yaml
-PYTHONPATH=services python services/mindmap_server.py --glossary_addr localhost:50051
+PYTHONPATH=services python services/glossary_server.py --data data/terms.yaml --port 50055
+PYTHONPATH=services python services/mindmap_server.py --glossary_addr localhost:50055 --port 50056
 ```
 
 ## Добавление термина (пример)
